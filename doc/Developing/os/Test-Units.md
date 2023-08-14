@@ -48,6 +48,21 @@ Generally, you will only need to collect data once.
 After you have the data you need in the snmprec file, you can just use
 save-test-data.php to update the database dump (json) after that.
 
+## Make a Test Database
+```
+CREATE DATABASE librenms_testing CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'librenms'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON librenms_testing.* TO 'librenms'@'localhost';
+```
+## Add Test Database to .env
+
+```
+#librenms_testing
+DB_TEST_HOST=localhost
+DB_TEST_DATABASE=librenms_testing
+DB_TEST_USERNAME=librenms_testing
+DB_TEST_PASSWORD=password
+```
 ## Running tests
 
 **Note:** To run tests, ensure you have executed
